@@ -1,0 +1,4 @@
+# Mehrdad Lashkary
+
+### Education
+Economics

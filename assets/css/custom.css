@@ -1,0 +1,664 @@
+/**
+* Academic customisation layer for the Kelly template.
+* Loaded AFTER main.css so these rules win.
+* Edit colours in ONE place: the :root block below.
+*/
+
+/*--------------------------------------------------------------
+# 1. Theme  — change the palette here and the whole site follows
+--------------------------------------------------------------*/
+:root {
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --heading-font: "Lora", Georgia, "Times New Roman", serif;
+  --nav-font: "Roboto", system-ui, sans-serif;
+
+  --background-color: #ffffff;
+  --default-color: #41505d;
+  --heading-color: #10263a;
+  --accent-color: #1b4965;
+  --surface-color: #ffffff;
+  --contrast-color: #ffffff;
+
+  --rule-color: #dde5ea;
+}
+
+:root {
+  --nav-color: #33424e;
+  --nav-hover-color: #1b4965;
+  --nav-mobile-background-color: #ffffff;
+  --nav-dropdown-background-color: #ffffff;
+  --nav-dropdown-color: #33424e;
+  --nav-dropdown-hover-color: #1b4965;
+}
+
+.light-background {
+  --background-color: #eef2f5;
+  --surface-color: #ffffff;
+}
+
+.dark-background {
+  --background-color: #10263a;
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  --surface-color: #1b4965;
+  --contrast-color: #ffffff;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+/* Tighten the template's very generous section padding */
+section,
+.section {
+  padding: 48px 0;
+}
+
+/* Left-align section titles to match the left-aligned content beneath them */
+.section-title {
+  padding-bottom: 24px;
+  text-align: left;
+}
+
+.section-title h1,
+.section-title h2 {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  position: relative;
+  letter-spacing: 0;
+}
+
+.section-title h1::after,
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--accent-color);
+  left: 0;
+  right: auto;
+  bottom: 0;
+  margin: 0;
+}
+
+/* The header wordmark is a <span> now, so it needs the old h1 styling */
+.header .logo .sitename {
+  font-family: var(--heading-font);
+  font-size: 23px;
+  font-weight: 600;
+  margin: 0;
+  text-transform: none;
+  letter-spacing: .2px;
+  color: var(--heading-color);
+  line-height: 1.2;
+}
+
+.section-title p {
+  font-size: 16px;
+  font-family: var(--default-font);
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  text-transform: none;
+  letter-spacing: 0;
+  margin-bottom: 0;
+}
+
+.navmenu a {
+  font-size: 15px;
+}
+
+/* Accessible keyboard focus everywhere */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/*--------------------------------------------------------------
+# 2. Home / landing
+--------------------------------------------------------------*/
+.profile-section {
+  padding-top: 48px;
+}
+
+.profile-photo {
+  width: 100%;
+  max-width: 260px;
+  border-radius: 4px;
+  border: 1px solid var(--rule-color);
+}
+
+.profile-name {
+  font-family: var(--heading-font);
+  font-size: 38px;
+  font-weight: 600;
+  color: var(--heading-color);
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.profile-role {
+  font-size: 17px;
+  color: var(--accent-color);
+  margin-bottom: 20px;
+}
+
+.profile-section .lead-text {
+  font-size: 16.5px;
+  margin-bottom: 16px;
+}
+
+/* Numbered research-interest list */
+.interest-list {
+  margin: 0 0 18px 0;
+  padding-left: 20px;
+}
+
+.interest-list li {
+  margin-bottom: 5px;
+  padding-left: 4px;
+}
+
+/* One-line skills strip */
+.skills-strip {
+  border-top: 1px solid var(--rule-color);
+  border-bottom: 1px solid var(--rule-color);
+  padding: 13px 0;
+  margin: 22px 0;
+  font-size: 15px;
+}
+
+.skills-strip .strip-label {
+  font-weight: 600;
+  color: var(--heading-color);
+  margin-right: 6px;
+}
+
+.skills-strip .chip {
+  display: inline-block;
+  color: var(--default-color);
+}
+
+.skills-strip .chip:not(:last-child)::after {
+  content: "·";
+  color: color-mix(in srgb, var(--default-color), transparent 55%);
+  margin: 0 7px;
+}
+
+/* Experience highlights */
+.highlight-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 22px 0;
+}
+
+.highlight-list li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 11px;
+}
+
+.highlight-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 9px;
+  height: 2px;
+  background: var(--accent-color);
+}
+
+.highlight-list .where {
+  font-weight: 600;
+  color: var(--heading-color);
+}
+
+/*--------------------------------------------------------------
+# 3. Academic / social icon links
+--------------------------------------------------------------*/
+.academic-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.academic-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  border: 1px solid var(--rule-color);
+  border-radius: 3px;
+  color: var(--default-color);
+  font-size: 14px;
+  background: var(--surface-color);
+  transition: color .2s, border-color .2s, background-color .2s;
+}
+
+.academic-links a:hover {
+  color: var(--contrast-color);
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.academic-links i {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.academic-links svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+/* "RG" lettermark stands in for the ResearchGate glyph */
+.lettermark {
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: .3px;
+  border: 1.4px solid currentColor;
+  border-radius: 2px;
+  padding: 0 3px;
+  line-height: 1.35;
+}
+
+/*--------------------------------------------------------------
+# 4. Publications  (classic economics research-page format)
+--------------------------------------------------------------*/
+.pub-group {
+  margin-bottom: 40px;
+}
+
+.pub-group > h3 {
+  font-family: var(--heading-font);
+  font-size: 21px;
+  color: var(--heading-color);
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--accent-color);
+}
+
+.pub-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: pub;
+}
+
+.pub-item {
+  padding: 0 0 18px 34px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--rule-color);
+  position: relative;
+  counter-increment: pub;
+}
+
+.pub-item:last-child {
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+
+/* Numbering is meaningful here: it's how econ CVs enumerate papers */
+.pub-item::before {
+  content: counter(pub) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--heading-font);
+  font-size: 15px;
+  color: color-mix(in srgb, var(--default-color), transparent 45%);
+}
+
+.pub-title {
+  font-family: var(--heading-font);
+  font-size: 17.5px;
+  font-weight: 600;
+  color: var(--heading-color);
+  display: block;
+  margin-bottom: 3px;
+  line-height: 1.4;
+}
+
+a.pub-title:hover {
+  color: var(--accent-color);
+}
+
+.pub-authors {
+  font-size: 15px;
+  font-style: italic;
+  color: color-mix(in srgb, var(--default-color), transparent 12%);
+  margin-bottom: 3px;
+}
+
+.pub-venue {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.pub-venue .journal {
+  font-style: italic;
+}
+
+.pub-status {
+  display: inline-block;
+  font-size: 13px;
+  color: var(--accent-color);
+  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 65%);
+  border-radius: 2px;
+  padding: 1px 7px;
+  margin-left: 4px;
+}
+
+/* Pdf | Data | Code  — pipe-separated, the econ-page convention */
+.pub-resources {
+  font-size: 14px;
+}
+
+.pub-resources a {
+  color: var(--accent-color);
+}
+
+.pub-resources a:hover {
+  text-decoration: underline;
+}
+
+.pub-resources span.sep {
+  color: color-mix(in srgb, var(--default-color), transparent 60%);
+  margin: 0 7px;
+}
+
+.pub-abstract-toggle {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 14px;
+  color: var(--accent-color);
+  cursor: pointer;
+}
+
+.pub-abstract-toggle:hover {
+  text-decoration: underline;
+}
+
+.pub-abstract {
+  display: none;
+  font-size: 14.5px;
+  line-height: 1.7;
+  background: #f5f8fa;
+  border-left: 3px solid var(--accent-color);
+  padding: 13px 16px;
+  margin-top: 11px;
+  border-radius: 0 3px 3px 0;
+}
+
+.pub-abstract.open {
+  display: block;
+}
+
+/*--------------------------------------------------------------
+# 5. Teaching
+--------------------------------------------------------------*/
+.teach-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.teach-item {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rule-color);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 5px 14px;
+}
+
+.teach-item:first-child {
+  padding-top: 0;
+}
+
+.teach-item:last-child {
+  border-bottom: 0;
+}
+
+.teach-course {
+  font-family: var(--heading-font);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+.teach-course:hover {
+  text-decoration: underline;
+}
+
+.teach-course i {
+  font-size: 13px;
+  margin-left: 4px;
+  opacity: .65;
+}
+
+.teach-level {
+  font-size: 15px;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+}
+
+.teach-meta {
+  flex-basis: 100%;
+  font-size: 14px;
+  color: color-mix(in srgb, var(--default-color), transparent 35%);
+}
+
+/*--------------------------------------------------------------
+# 6. CV
+--------------------------------------------------------------*/
+.cv-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  padding: 14px 28px;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color .2s;
+}
+
+.cv-download:hover {
+  background: color-mix(in srgb, var(--accent-color), #000 15%);
+  color: var(--contrast-color);
+}
+
+.cv-download i {
+  font-size: 19px;
+}
+
+.cv-updated {
+  font-size: 14px;
+  color: color-mix(in srgb, var(--default-color), transparent 35%);
+  margin-top: 11px;
+}
+
+.cv-embed {
+  width: 100%;
+  height: 780px;
+  border: 1px solid var(--rule-color);
+  border-radius: 3px;
+  margin-top: 28px;
+}
+
+.cv-summary h3 {
+  font-family: var(--heading-font);
+  font-size: 19px;
+  color: var(--heading-color);
+  padding-bottom: 7px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--accent-color);
+}
+
+.cv-entry {
+  padding-left: 16px;
+  border-left: 2px solid var(--rule-color);
+  margin-bottom: 20px;
+}
+
+.cv-entry h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--heading-color);
+  margin-bottom: 2px;
+}
+
+.cv-entry .cv-org {
+  font-size: 15px;
+  color: var(--accent-color);
+  margin-bottom: 2px;
+}
+
+.cv-entry .cv-date {
+  font-size: 13.5px;
+  color: color-mix(in srgb, var(--default-color), transparent 35%);
+  margin-bottom: 6px;
+}
+
+.cv-entry ul {
+  padding-left: 18px;
+  margin: 0;
+  font-size: 15px;
+}
+
+.cv-entry ul li {
+  margin-bottom: 4px;
+}
+
+/*--------------------------------------------------------------
+# 7. Contact
+--------------------------------------------------------------*/
+.contact .info-item {
+  background: var(--surface-color);
+  padding: 20px;
+  border: 1px solid var(--rule-color);
+  border-radius: 3px;
+  margin-bottom: 16px;
+}
+
+.contact .info-item i {
+  font-size: 20px;
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 92%);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
+.contact .info-item h3 {
+  font-family: var(--default-font);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--heading-color);
+  margin-bottom: 3px;
+}
+
+.contact .info-item p {
+  font-size: 15px;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+.contact .info-item a {
+  color: var(--accent-color);
+  word-break: break-word;
+}
+
+.contact-map {
+  width: 100%;
+  height: 340px;
+  border: 1px solid var(--rule-color);
+  border-radius: 3px;
+}
+
+/*--------------------------------------------------------------
+# 8. Footer
+--------------------------------------------------------------*/
+.footer {
+  padding: 28px 0;
+  font-size: 14px;
+}
+
+.footer .credits {
+  font-size: 13px;
+  padding-top: 6px;
+}
+
+/*--------------------------------------------------------------
+# 9. Responsive
+--------------------------------------------------------------*/
+@media (max-width: 991px) {
+  .profile-photo {
+    max-width: 200px;
+    margin-bottom: 22px;
+  }
+
+  .profile-name {
+    font-size: 31px;
+  }
+
+  .cv-embed {
+    height: 520px;
+  }
+}
+
+@media (max-width: 575px) {
+  .profile-name {
+    font-size: 27px;
+  }
+
+  .academic-links a {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  .pub-item {
+    padding-left: 26px;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* Print: drop chrome, keep content */
+@media print {
+
+  .header,
+  .footer,
+  .scroll-top,
+  .cv-download {
+    display: none !important;
+  }
+}
